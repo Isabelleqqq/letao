@@ -1,14 +1,14 @@
 $(function() {
-  //使用表单插件验证
+  //1.使用表单插件验证
   $("#form").bootstrapValidator({
-    //2. 指定校验时的图标显示，默认是bootstrap风格
+    // 指定校验时的图标显示，默认是bootstrap风格
     feedbackIcons: {
       valid: "glyphicon glyphicon-ok",
       invalid: "glyphicon glyphicon-remove",
       validating: "glyphicon glyphicon-refresh"
     },
 
-    //3. 指定校验字段
+    //指定校验字段
     fields: {
       //校验用户名，对应name表单的name属性
       username: {
@@ -22,6 +22,9 @@ $(function() {
             min: 2,
             max: 6,
             message: "用户名长度必须在2到6之间"
+          },
+          callback: {
+            message: "用户名不存在"
           }
         }
       },
@@ -37,13 +40,16 @@ $(function() {
             min: 6,
             max: 12,
             message: "密码长度必须在6到12之间"
+          },
+          callback: {
+            message: "密码错误"
           }
         }
       }
     }
   });
 
-  //禁止表单的自动提交，使用ajax发送请求验证表单内容
+  //2.禁止表单的自动提交，使用ajax发送请求验证表单内容
   //若验证成功，跳转至index页面，否则弹出错误信息
   $("#form").on("success.form.bv", function(e) {
     e.preventDefault();
@@ -56,8 +62,15 @@ $(function() {
       success: function(info) {
         if (info.success) {
           location.href = "index.html";
-        } else {
-          alert(info.message);
+        } else if (info.error === 1000) {
+          // alert(info.message);
+          $("#form")
+            .data("bootstrapValidator")
+            .updateStatus("username", "INVALID", "callback");
+        } else if (info.error === 1001) {
+          $("#form")
+            .data("bootstrapValidator")
+            .updateStatus("password", "INVALID", "callback");
         }
       }
     });
