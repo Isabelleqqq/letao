@@ -9,6 +9,14 @@ ul {
   margin: 0;
   padding: 0;
 }
+/*让表格的th td中内容居中*/
+/*为了权重高过默认样式  应该用两个类*/
+.table.table-bordered th,
+.table.table-bordered td {
+  text-align: center;
+  /*表格中垂直居中*/
+  vertical-align: middle;
+}
 /*=====================登录界面============*/
 .body_bg {
   background-color: #222d32;
@@ -80,6 +88,7 @@ ul {
   color: #fff;
   border-left: 3px solid transparent;
 }
+/*当前页面导航栏高亮*/
 .lt_aside .nav li a.current {
   background-color: #1d1f21;
   border-left: 3px solid #069;
