@@ -55,7 +55,7 @@
                 <li class="active">一级分类</li>
             </ol>
             <div class="lt_content">
-                <button class="btn btn-default">添加分类</button>
+                <button class="addBtn btn btn-default">添加分类</button>
                 <table class="mt-20 table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    <!--模态框-->
+    <!--退出登录模态框-->
     <!--外层蒙版-->
     <div class="modal fade" tabindex="-1" id="logoutModal">
         <!--内层模态框-->
@@ -101,6 +101,35 @@
             </div>
         </div>
     </div>
+
+    <!--添加分类模态框-->
+    <!--外层蒙版-->
+    <div class="modal fade" tabindex="-1" id="addModal">
+        <!--内层模态框-->
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <!--要使用form把input和submit包裹起来-->
+                <form id="form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title">添加分类</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--每行外层要套一个form-group，这是bootstrap规则，如果不套，后面使用表单验证插件时会报错-->
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="请输入一级分类" name="categoryName">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary" id="addBtn">添加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <!--模板引擎-->
     <script type="text/html" id="firstTpl">

@@ -1,16 +1,17 @@
-$(function() {
-  // 1.进度条功能
-  // 第一个ajax请求开始时开始进度条
-  $(document).ajaxStart(function() {
-    NProgress.start();
-  });
-  // 所有的ajax请求结束后关闭进度条
-  $(document).ajaxStop(function() {
-    setTimeout(function() {
-      NProgress.done();
-    }, 3000);
-  });
+// 1.进度条功能
+// 第一个ajax请求开始时开始进度条
+$(document).ajaxStart(function() {
+  NProgress.start();
+});
+// 所有的ajax请求结束后关闭进度条
+$(document).ajaxStop(function() {
+  setTimeout(function() {
+    NProgress.done();
+  }, 3000);
+});
 
+// 等待页面和dom都加载完
+$(function() {
   // 公共部分功能
   // 1.左侧二级菜单切换功能
   $("#category").click(function() {
